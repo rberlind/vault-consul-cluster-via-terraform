@@ -60,7 +60,7 @@ sudo chown root:root /usr/local/bin/consul
 cat <<EOF >/tmp/consul-config
 ${consul_config}
 EOF
-IP_ADDRESS=$(curl http://instance-data/latest/meta-data/local-ipv4)
+IP_ADDRESS=$(curl http://169.254.169.254/instance-data/latest/meta-data/local-ipv4)
 sed -i "s/IP_ADDRESS/$IP_ADDRESS/g" /tmp/consul-config
 sudo mv /tmp/consul-config /usr/local/etc/consul-config.json
 
